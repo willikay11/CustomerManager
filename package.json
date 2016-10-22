@@ -1,0 +1,27 @@
+{
+  "name": "customermanager",
+  "version": "1.0.0",
+  "description": "Internship angulat project",
+  "main": "index.html",
+  "scripts": {
+    "test": "No test specified"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willikay11/CustomerManager.git"
+  },
+  "keywords": [
+    "customer"
+  ],
+  "author": "willikay11",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willikay11/CustomerManager/issues"
+  },
+  "homepage": "https://github.com/willikay11/CustomerManager#readme",
+  "devDependencies": {
+    "gulp-main-bower-files": "^1.5.3",
+    "gulp-sass": "^2.3.2",
+    "mix": "0.0.1"
+  }
+}

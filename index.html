@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+    <!-- angular scripts -->
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.min.js"></script>
+
+    <title>Customer Manager</title>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/app/css/foundation.min.css" />
+
+    <!-- application css -->
+    <link href="/app/css/app.css/styles.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="#">Customer Manager</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            <li class="has-dropdown">
+                <a href="#">Customers</a>
+                <ul class="dropdown">
+                    <li><a ui-sref="createcustomer" ui-sref-active="active">Create Customers</a></li>
+                    <li><a ui-sref="viewcustomers" ui-sref-active="active">View Customers</a></li>
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Orders</a>
+                <ul class="dropdown">
+                    <li><a ui-sref="createorder" ui-sref-active="active">Create Orders</a></li>
+                    <li><a ui-sref="vieworders" ui-sref-active="active">View Orders</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li><a href="#">Left Nav Button</a></li>
+        </ul>
+    </section>
+</nav>
+
+
+<!-- main app container -->
+<div class="callout">
+    <div class="row">
+        <div class="medium-12 columns">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>
+
+<!-- application scripts -->
+<script src="app.js"></script>
+<script src="services/authentication.service.js"></script>
+<script src="home/index.controller.js"></script>
+<script src="login/index.controller.js"></script>
+<script src="register/index.controller.js"></script>
+<script src="customer/customerController.js"></script>
+<script src="customer/customerService.js"></script>
+<script src="order/orders.js"></script>
+<script src="order/orderService.js"></script>
+
+<!-- scripts for fake backend -->
+<script src="/bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="helpers/fake-backend.js"></script>
+
+<!-- scripts for foundation-->
+<script src="/app/js/vendor/jquery.js"></script>
+<!--<script src="js/vendor/what-input.min.js"></script>-->
+<script src="/app/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

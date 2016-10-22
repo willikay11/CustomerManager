@@ -1,0 +1,81 @@
+<div class="row">
+    <div style="margin-top: 40px">
+        <div style="float: left; width: 50%;">
+            <h2>Create Order</h2>
+        </div>
+
+        <div style="float: right; width: 50%">
+            <a style="float: right" class="button radius" ui-sref="viewcustomers">View Orders</a>
+        </div>
+        <hr>
+        <form name="form" ng-submit="form.$valid && vm.createOrder()" novalidate>
+
+            <div ng-if="vm.anyCustomer" data-alert class="alert-box alert radius">
+                {{ vm.customersInfo }}
+                <a href="#" class="close">&times;</a>
+            </div>
+
+            <div class="form-group">
+                <label>Customer: </label>
+                <select name="customer" class="form-control" ng-model="vm.customer" required>
+                    <option data-ng-repeat="customer in customers track by $index"
+                            value="{{ customer.id}}">
+                        {{ customer.firstname }} {{ customer.lastname }}
+                    </option>
+                </select>
+
+                <div ng-messages="form.$submitted && form.customer.$error" class="help-block">
+                    <div class="alert-box alert radius" ng-message="required">Customer is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Item: </label>
+                <input type="text" name="item" class="form-control" ng-model="vm.item" required/>
+
+                <div ng-messages="form.$submitted && form.item.$error" class="help-block">
+                    <div class="alert-box alert radius" ng-message="required">Item is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Quantity: </label>
+                <input type="number" min="1" name="quantity" class="form-control" ng-model="vm.quantity" required/>
+
+                <div ng-messages="form.$submitted && form.quantity.$error" class="help-block">
+                    <div class="alert-box alert radius" ng-message="required">Quantity is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Price: </label>
+                <input type="number" min="0" name="price" class="form-control" ng-model="vm.price" required/>
+
+                <div ng-messages="form.$submitted && form.price.$error" class="help-block">
+                    <div class="alert-box alert radius" ng-message="required">Price is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Status: </label>
+                <select name="status" class="form-control" ng-model="vm.status" required>
+                    <option value="In Production">In Production</option>
+                    <option value="Ready">Ready</option>
+                    <option value="Awaiting Pick-up">Awaiting Pick-up</option>
+                    <option value="Delivery">Delivery</option>
+                </select>
+
+                <div ng-messages="form.$submitted && form.status.$error" class="help-block">
+                    <div class="alert-box alert radius" ng-message="required">Status is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button ng-disabled="vm.loading" class="button expand radius">Create Order</button>
+            </div>
+            <div ng-if="vm.error" data-alert class="alert-box alert radius">
+                {{ vm.error }}
+                <a href="#" class="close">&times;</a>
+            </div>
+            <div ng-if="vm.created" data-alert class="alert-box success radius">
+                {{ vm.success }}
+                <a href="#" class="close">&times;</a>
+            </div>
+        </form>
+    </div>
+</div>

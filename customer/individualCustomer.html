@@ -1,0 +1,66 @@
+<div class="row">
+    <div style="margin-top: 40px">
+        <div style="float: left; width: 50%;">
+            <h2>View Customer</h2>
+        </div>
+        <div style="float: right; width: 50%">
+            <a style="float: right" class="button radius" ui-sref="viewcustomers">View Customers</a>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <div style="background: #d1d1d1">
+            <div style="float: left; width: 30%; margin-top: 20px;">
+                <a class="th" href="../app/img/avatar.png"><img src="../app/img/avatar.png"></a>
+            </div>
+            <div style="float: left; width:60%; margin: 20px;">
+                <p><b>Name : </b>{{ individualCustomer. firstname}} {{ individualCustomer.lastname }}</p>
+
+                <p><b>Email : </b>{{ individualCustomer.email}}</p>
+
+                <p><b>Phone Number : </b>{{ individualCustomer.phone }}</p>
+
+                <p><b>Orders: </b>{{ noOfOrders }}</p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row" style="margin-top: 50px">
+    <hr>
+    <div ng-if="vm.orders" data-alert class="alert-box alert radius">
+        {{ vm.orderMessage }}
+        <a href="#" class="close">&times;</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th width="200">Order Number</th>
+            <th width="200">Item</th>
+            <th width="200">Quantity</th>
+            <th width="200">Status</th>
+            <th width="200">Price</th>
+            <th width="200">Total</th>
+        </tr>
+        </thead>
+        <tbody data-ng-repeat="customerOrder in customerOrders track by $index">
+        <tr>
+            <td>{{ customerOrder.id }}</td>
+            <td>{{ customerOrder.item }}</td>
+            <td>{{ customerOrder.quantity }}</td>
+            <td>{{ customerOrder.status }}</td>
+            <td>{{ customerOrder.price}}</td>
+            <td>{{ customerOrder.price * customerOrder.quantity }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td style="text-align: right;" colspan="5">Total</td>
+            <td>{{ customerOrders | totalSumQuantity:'quantity':'price' }}</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

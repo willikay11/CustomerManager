@@ -1,0 +1,41 @@
+<div class="row">
+    <div style="margin-top: 40px">
+        <div style="float: left; width: 50%;">
+            <h2>View Orders</h2>
+        </div>
+        <div style="float: right; width: 50%">
+        </div>
+        <hr>
+        <div ng-if="vm.anyOrders" data-alert class="alert-box alert radius">
+            {{ vm.ordersMessage }}
+            <a href="#" class="close">&times;</a>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th width="200">Order ID</th>
+                <th width="200">Name</th>
+                <th width="200">Item</th>
+                <th width="200">Quantity</th>
+                <th width="200">Status</th>
+                <th width="200">Price</th>
+                <th width="200">Edit</th>
+                <th width="200">Delete</th>
+            </tr>
+            </thead>
+            <tbody data-ng-repeat="order in orders track by $index">
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer.Id }}</td>
+                <!--<td>{{ order.customerId | getCustomerName:'id' }}</td>-->
+                <td>{{ order.item }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.price }}</td>
+                <td><a class="button success radius" ui-sref="editorders({ orderID: order.id })">Edit</a></td>
+                <td><a class="button alert radius" href="#">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
